@@ -1,2 +1,4 @@
 # jogo_fxgl
-AUGUSTO DUARTE FARIAS
+Autor: AUGUSTO DUARTE FARIAS
+Ano: 2018
+Disciplina: Programação de Computadores 2
