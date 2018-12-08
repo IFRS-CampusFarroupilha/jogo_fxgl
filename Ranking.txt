@@ -1,6 +1,1 @@
-﻿Nome: Rafael	 Pontuação: 1425
-Nome: Coelho	 Pontuação: 45
-Nome: Melhor	 Pontuação: 830
-Nome: Professor	 Pontuação: 1430
-Nome: Do	 Pontuação: 30
-Nome: Instituto Federal	 Pontuação: 830
+﻿
