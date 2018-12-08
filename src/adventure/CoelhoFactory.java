@@ -27,8 +27,7 @@ public class CoelhoFactory implements EntityFactory {
     public Entity newgatinho(SpawnData data) {
         return Entities.builder()
                 .type(CoelhoType.GATILHO)
-                //.bbox(new HitBox(BoundingShape.box(1, 700)))
-                .viewFromNodeWithBBox(new Rectangle(5, 700, Color.BLUEVIOLET))
+                .bbox(new HitBox(BoundingShape.box(3, 700)))
                 .with(new CollidableComponent(true))
                 .build();
     }
@@ -60,12 +59,15 @@ public class CoelhoFactory implements EntityFactory {
 
     @Spawns("forca")
     public Entity newForca(SpawnData data) {
+        PhysicsComponent physics = new PhysicsComponent();
+        physics.setBodyType(BodyType.KINEMATIC);
         return Entities.builder()
                 .type(CoelhoType.FORCA)
                 .from(data)
                 .viewFromTexture("/Map/forca.png")
                 .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"), data.<Integer>get("height"))))
                 .with(new CollidableComponent(true))
+                .with(physics)
                 .build();
     }
 
@@ -76,7 +78,6 @@ public class CoelhoFactory implements EntityFactory {
                 .from(data)
                 .bbox(new HitBox(BoundingShape.box(data.<Integer>get("width"), data.<Integer>get("height"))))
                 .with(new CollidableComponent(true))
-                .with(new PhysicsComponent())
                 .build();
     }
 

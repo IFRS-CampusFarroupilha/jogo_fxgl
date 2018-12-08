@@ -43,7 +43,7 @@ public class CoelhoAdventure extends GameApplication {
     protected int Height = 512;
     private Entity player;
     private int vidas = 0;
-    private int level = 1;
+    private int level = 3;
     private Text vidinhas;
     private int scores = 0;
     private Text score;
@@ -53,9 +53,11 @@ public class CoelhoAdventure extends GameApplication {
     private Entity Gatilho;
     private final int EnemyLife = 3;
     private int i = 0;
-    private int k = 0;
+    private int k = 5000;
     Music musica;
     private int InimigosMortos = 0;
+    boolean ganhou = false;
+    boolean jadeu = true;
 
     @Override
     protected void initSettings(GameSettings gs) {
@@ -182,12 +184,13 @@ public class CoelhoAdventure extends GameApplication {
     }
 
     protected void nextLevel() {
-        if (vidas <= 0) {
+        if (vidas <= 0 || ganhou == true) {
             scores = 0;
             vidas = 3;
-
+            ganhou = false;
             getGameState().setValue("scores", scores);
             getGameState().increment("vidas", vidas);
+        } else {
         }
         getGameWorld().clear();
         getGameWorld().addEntityFactory(new CoelhoFactory());
@@ -409,9 +412,23 @@ public class CoelhoAdventure extends GameApplication {
     protected void onUpdate(double tpf) {
         vidinhas.textProperty().bind(getGameState().intProperty("vidas").asString());
         score.textProperty().bind(getGameState().intProperty("scores").asString());
+        if (level == 2) {
+            if(jadeu){
+                if (getGameWorld().getEntitiesByType(CoelhoType.BROKEN).isEmpty()) {
+                vidas = vidas + 5;
+                getGameState().increment("vidas", 5);
+                jadeu = false;
+            }
+            }
+        }
         if (level == 3) {
-            if (getGameWorld().getEntitiesByType(CoelhoType.KNIGHT).isEmpty()) {
+            if(getGameWorld().getEntitiesByType(CoelhoType.FINALBOSS).isEmpty()){
+                
+            } else{ 
+                if (getGameWorld().getEntitiesByType(CoelhoType.KNIGHT).isEmpty()) {
                 Boss.getComponent(FinalBossControl.class).setEscudo(0);
+            }
+            
 
             }
         }
@@ -449,9 +466,14 @@ public class CoelhoAdventure extends GameApplication {
         if(level == 1 || level == 2){
             getGameWorld().removeEntity(LightBandit);
         }
-         
+        
         if(level == 3){
-            Boss.getComponent(FinalBossControl.class).chance = 98750;
+            if (getGameWorld().getEntitiesByType(CoelhoType.FINALBOSS).isEmpty()) {
+                
+            } else {
+                Boss.getComponent(FinalBossControl.class).chance = 98750;
+            }
+            
         }
         
         String nome;
@@ -504,10 +526,12 @@ public class CoelhoAdventure extends GameApplication {
         } catch (IOException e) {
             System.out.println(e);
         }
-
+        getGameState().setValue("vidas", 0);
+        InimigosMortos = 0;
         level = 1;
         getAudioPlayer().stopMusic(musica);
         initUI();
+        ganhou = true;
         nextLevel();
     }
 

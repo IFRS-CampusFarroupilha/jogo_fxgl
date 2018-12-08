@@ -81,14 +81,15 @@ public class FinalBossControl extends Component {
             boladefogo = control.getGameWorld().spawn("boladefogo", 800, 0);
             boladefogo = control.getGameWorld().spawn("boladefogo", 700, 0);
             boladefogo = control.getGameWorld().spawn("boladefogo", 600, 0);
-            boladefogo = control.getGameWorld().spawn("boladefogo", 400, 0);
-            boladefogo = control.getGameWorld().spawn("boladefogo", 300, 0);
-            boladefogo = control.getGameWorld().spawn("boladefogo", 650, 0);
-            boladefogo = control.getGameWorld().spawn("boladefogo", 450, 0);
-            boladefogo = control.getGameWorld().spawn("boladefogo", 350, 0);
-            boladefogo = control.getGameWorld().spawn("boladefogo", 250, 0);
             boladefogo = control.getGameWorld().spawn("boladefogo", 500, 0);
-            boladefogo = control.getGameWorld().spawn("boladefogo", 550, 0);      
+            boladefogo = control.getGameWorld().spawn("boladefogo", 300, 0);
+            boladefogo = control.getGameWorld().spawn("boladefogo", 200, 0);
+            boladefogo = control.getGameWorld().spawn("boladefogo", 800, 0);
+            boladefogo = control.getGameWorld().spawn("boladefogo", 700, 0);
+            boladefogo = control.getGameWorld().spawn("boladefogo", 600, 0);
+            boladefogo = control.getGameWorld().spawn("boladefogo", 500, 0);
+            boladefogo = control.getGameWorld().spawn("boladefogo", 300, 0);
+            boladefogo = control.getGameWorld().spawn("boladefogo", 200, 0);
         }
 
     }
